@@ -44,12 +44,13 @@ gem 'rake', '~> 0.9.2'
 gem 'acts_as_list'
 gem 'acts_as_tree_rails3'
 gem 'recaptcha', :require => 'recaptcha/rails', :branch => 'rails3'
+gem 'rspec-rails', '~> 2.11'
 
 group :development, :test do
   gem 'ruby-debug19'
   gem 'factory_girl', '~> 2.2'
   gem 'webrat'
-  gem 'rspec-rails', '~> 2.0'
+  # gem 'rspec-rails', '~> 2.0'
   gem 'simplecov', :require => false
   gem 'sqlite3'
   gem 'cucumber'
