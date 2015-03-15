@@ -48,7 +48,7 @@ class ArticlesController < ContentController
 
   def merge
     begin 
-      @foreign = Article.find(params[:foreign_id])
+      @foreign = Article.find(params[:merge_with])
       @original = Article.find(params[:id])
       @original.update_attributes!(body: @original.body + @foreign.body)
       redirect_to admin_dashboard_path
