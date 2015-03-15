@@ -75,6 +75,7 @@ class Article < Content
     puts "HELLOOOOSODFDSFS FDS DOGS" 
     # self.body = self.body << "\n #{foreign_article.body}"
     self.update_attributes!(body: self.body << "\n #{foreign_article.body}")
+    self.reload
   end
 
   def set_permalink

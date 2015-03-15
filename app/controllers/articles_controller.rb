@@ -47,12 +47,14 @@ class ArticlesController < ContentController
   end
 
   def merge
-    #begin 
-    Article.find(params[:id]).merge(Article.find(params[:foreign_id]))
-    redirect_to admin_dashboard_path
-    #rescue
-     # redirect_to root_path
-    #end
+    begin 
+      @foreign = Article.find(params[:foreign_id])
+      @original = Article.find(params[:id])
+      @original.update_attributes!(body: @original.body + @foreign.body)
+      redirect_to admin_dashboard_path
+    rescue
+      redirect_to root_path
+    end
   end
 
   def search
