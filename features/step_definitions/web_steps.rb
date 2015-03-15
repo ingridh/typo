@@ -41,8 +41,8 @@ Given /^the blog is set up$/ do
                 :profile_id => 1,
                 :name => 'admin',
                 :state => 'active'})
-  User.create!({login: 'contributor', password: 'password', 
-                email: 'yoloswag@yolo.com', profile_id: '3' })
+  User.create!({login: 'publisher', password: 'password', 
+                email: 'yoloswag@yolo.com', profile_id: '2' }).articles.create!(:allow_comments => true, :allow_pings => true, :author => "yolo", :body => "Welcome to Typo. This is your first article. Edit or delete it, then start blogging!", :guid => "1bf3e2ca-ed7b-4562-8a4a-8ce8438822c9", :id => 3, :permalink => "hello-world", :post_type => "read", :published => true, :published_at => "2013-06-09 21:51:55 UTC", :settings => {"password"=>""}, :state => "published", :text_filter_id => 5, :title => "Hello World!", :type => "Article")
 end
 
 And /^I am logged into the admin panel$/ do
@@ -59,7 +59,7 @@ end
 
 And /^I am logged into the contributor panel$/ do
   visit '/accounts/login'
-  fill_in 'user_login', :with => 'contributor'
+  fill_in 'user_login', :with => 'publisher'
   fill_in 'user_password', :with => 'password'
   click_button 'Login'
   if page.respond_to? :should

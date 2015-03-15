@@ -9,10 +9,10 @@ Feature: Merging Articles
 
   Scenario: A non-admin cannot merge two articles
     Given I am logged into the contributor panel
-    #When I am on the new article page
+    When I go to my article
     Then I should not see "Merge Articles"
 
   Scenario: A admin should be able to see merge article option
-    Given I am logged into the contributor panel
-    #When I am on the new article page
-    Then I should not see "Merge Articles"
+    Given I am logged into the admin panel
+    When I go to my article
+    Then I should see "Merge Articles"

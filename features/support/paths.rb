@@ -17,6 +17,9 @@ module NavigationHelpers
       '/'
     when /^the new article page$/
       '/admin/content/new'
+    when /^my article$/
+      article = Article.find_by_author('yolo').id
+      "admin/content/edit/#{article}"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
