@@ -48,7 +48,9 @@ class ArticlesController < ContentController
 
   def merge
     #begin 
-    Article.find(params[:id]).merge(Article.find(params[:foreign_id]))
+    @article = Article.find params[:id]
+    @article.update_attributes!(body: 'YOLOSWAG')
+    #Article.find(params[:id]).merge(Article.find(params[:foreign_id]))
     redirect_to admin_dashboard_path
     #rescue
      # redirect_to root_path
