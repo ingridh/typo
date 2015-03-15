@@ -15,11 +15,19 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
+
     when /^the new article page$/
       '/admin/content/new'
-    when /^my article$/
-      article = Article.find_by_author('yolo').id
+
+    when /^article: "(.*)"$/i
+      article = Article.find_by_title(($1)).id
       "admin/content/edit/#{article}"
+
+    when /^view article: "(.*)"$/i
+      date = Article.find_by_title(($1)).published_at
+      permalink = Article.find_by_title(($1)).permalink
+      "#{date.year}/#{date.month}/#{date.day}/#{permalink}"
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

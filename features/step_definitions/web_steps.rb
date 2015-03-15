@@ -42,7 +42,10 @@ Given /^the blog is set up$/ do
                 :name => 'admin',
                 :state => 'active'})
   User.create!({login: 'publisher', password: 'password', 
-                email: 'yoloswag@yolo.com', profile_id: '2' }).articles.create!(:allow_comments => true, :allow_pings => true, :author => "yolo", :body => "Welcome to Typo. This is your first article. Edit or delete it, then start blogging!", :guid => "1bf3e2ca-ed7b-4562-8a4a-8ce8438822c9", :id => 3, :permalink => "hello-world", :post_type => "read", :published => true, :published_at => "2013-06-09 21:51:55 UTC", :settings => {"password"=>""}, :state => "published", :text_filter_id => 5, :title => "Hello World!", :type => "Article")
+                email: 'yoloswag@yolo.com', profile_id: '2' }).articles.create!(:allow_comments => true, :allow_pings => true, 
+                :author => "yolo", :body => "swag", :guid => "1bf3e2ca-ed7b-4562-8a4a-8ce8438822c9", :id => 3, :permalink => "hello-world", 
+                :post_type => "read", :published => true, :published_at => "2013-06-09 21:51:55 UTC", :settings => {"password"=>""}, 
+                :state => "published", :text_filter_id => 5, :title => "yolo", :type => "Article").comments.create(author: 'swag_commenter', body: 'swag_content')
 end
 
 And /^I am logged into the admin panel$/ do
@@ -67,6 +70,12 @@ And /^I am logged into the contributor panel$/ do
   else
     assert page.has_content?('Login successful')
   end
+end
+
+When /^I merge the current article with "(.*)"$/ do |foreign_article|
+  article_id = Article.find_by_title(foreign_article).id
+   When %{I fill in "article_id" with "#{article_id}"}
+  click_button('merge')
 end
 
 # Single-line step scoper
