@@ -69,6 +69,7 @@ Rails.application.routes.draw do
   match 'articles/tag', :to => 'articles#tag', :format => false
   match 'articles/category', :to => 'articles#category', :format => false
   match 'merge/:id', :to => 'articles#merge', :format => false, :as => 'merge'
+  
 
   # SetupController
   match '/setup', :to => 'setup#index', :format => false

@@ -2,16 +2,18 @@
 
 <%= render "admin/shared/edit", { :form_type => "article", :form_action => { :action => "new", :id => @article.id , :class => ('autosave')} } %>
 
-
 <% if current_user.login == 'admin' %>
-
   <div class = ''>
-    <h4><%= _("Merge Articles") %></h4>
-    <%= form_tag(merge_path) do %>
-
-    <%= label_tag(:foreign_id, "Article ID") %>
-    <%= text_field_tag(:foreign_id) %>
+ 	<h4><%= _("Merge Articles") %></h4>
+    <%= form_tag(merge_path(:id)) do %> <!-- if this has id in it it, it works but merge still doesn't work -->
+    <%= label_tag(:merge_with, "Article ID:") %>
+    <%= text_field_tag(:merge_with) %>
     <%= submit_tag("Merge") %>
     <% end %>
   </div>
 <% end %>
+
+
+
+
+ 
