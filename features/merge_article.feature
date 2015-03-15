@@ -6,7 +6,6 @@ Feature: Merging Articles
   Background:
     Given the blog is set up
 
-
   Scenario: A non-admin cannot merge two articles
     Given I am logged into the contributor panel
     When I go to article: "yolo"
@@ -35,5 +34,5 @@ Feature: Merging Articles
     When I go to article: "yolo"
     And I merge the current article with "Hello World!"
     When I go to view article: "yolo"
-    I should see "swag_content"
-    #I should see "yolo_content"
+    Then I should see "swag_content"
+    Then I should see "yolo_content"

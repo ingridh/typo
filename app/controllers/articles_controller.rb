@@ -46,6 +46,10 @@ class ArticlesController < ContentController
     end
   end
 
+  def merge
+    Article.find(params[:id]).merge(Article.find(params[:foreign_id]))
+  end
+
   def search
     @canonical_url = url_for(:only_path => false, :controller => 'articles', :action => 'search', :page => params[:page], :q => params[:q])
     @articles = this_blog.articles_matching(params[:q], :page => params[:page], :per_page => @limit)
