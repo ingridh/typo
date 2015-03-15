@@ -71,6 +71,12 @@ class Article < Content
     end
   end
 
+  def merge(foreign_article)
+    puts "HELLOOOOSODFDSFS FDS DOGS" 
+    # self.body = self.body << "\n #{foreign_article.body}"
+    self.update_attributes!(body: self.body << "\n #{foreign_article.body}")
+  end
+
   def set_permalink
     return if self.state == 'draft'
     self.permalink = self.title.to_permalink if self.permalink.nil? or self.permalink.empty?
