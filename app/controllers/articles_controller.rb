@@ -52,7 +52,11 @@ class ArticlesController < ContentController
       puts 'OK foreign'
       @original = Article.find(params[:id])
       puts 'OK original' 
-      @original.update_attributes!(body: @original.body + @foreign.body)
+      @original.update_attributes!(body: @original.body + @foreign.body, 
+                                  comments: @original.comments + @foreign.comments)
+
+      @foreign.destroy
+
       redirect_to admin_dashboard_path
   end
 
