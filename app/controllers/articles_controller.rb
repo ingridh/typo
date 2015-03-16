@@ -48,14 +48,12 @@ class ArticlesController < ContentController
 
   def merge
 
-    begin 
-      @foreign = Article.find(params[:merge_with])
+      @foreign = Article.find(params[:merge_id])
+      puts 'OK foreign'
       @original = Article.find(params[:id])
+      puts 'OK original' 
       @original.update_attributes!(body: @original.body + @foreign.body)
       redirect_to admin_dashboard_path
-    rescue
-      redirect_to root_path
-    end
   end
 
   def search
