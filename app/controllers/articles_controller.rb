@@ -48,7 +48,7 @@ class ArticlesController < ContentController
 
   def merge
 
-      @foreign = Article.find(params[:merge_id])
+      @foreign = Article.find(params[:merge_with])
       puts 'OK foreign'
       @original = Article.find(params[:id])
       puts 'OK original' 
