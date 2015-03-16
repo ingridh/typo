@@ -49,11 +49,11 @@ class ArticlesController < ContentController
   def merge
 
       @foreign = Article.find(params[:merge_with])
-      puts 'OK foreign'
       @original = Article.find(params[:id])
-      puts 'OK original' 
+      copied_comments = []
+      @foreign.comments.each do |comment| copied_comments << comment.clone end
       @original.update_attributes!(body: @original.body + @foreign.body, 
-                                  comments: @original.comments + @foreign.comments)
+                                  comments: @original.comments + copied_comments)
 
       @foreign.destroy
 
